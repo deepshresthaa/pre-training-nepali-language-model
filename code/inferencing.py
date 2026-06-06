@@ -63,10 +63,6 @@ def load_model(checkpoint_path: str,
                n_heads: int   = 8,
                d_ff: int      = 1024,
                dropout_rate: float = 0.1):
-    """
-    Rebuild the model architecture and load weights from a checkpoint.
-    Architecture args must match exactly what was used during training.
-    """
     tokenizer = VocabTokenizer(vocab_file)
 
     embedding, pos_enc, encoder = build_encoder(

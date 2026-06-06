@@ -1,38 +1,3 @@
-"""
-checkpoint.py
-─────────────────────────────────────────────────────────────────────────────
-Save and load ALL trainable parameters of the protein-LM encoder to a single
-NumPy .npz archive.
-
-Layout of the archive
-─────────────────────
-  embed/weight
-  pos_enc/pe                          ← fixed, saved for reference only
-
-  encoder/layer_{i}/attn/W_q
-  encoder/layer_{i}/attn/W_k
-  encoder/layer_{i}/attn/W_v
-  encoder/layer_{i}/attn/W_o
-  encoder/layer_{i}/ff/W1
-  encoder/layer_{i}/ff/b1
-  encoder/layer_{i}/ff/W2
-  encoder/layer_{i}/ff/b2
-  encoder/layer_{i}/res0/norm/alpha
-  encoder/layer_{i}/res0/norm/bias
-  encoder/layer_{i}/res1/norm/alpha
-  encoder/layer_{i}/res1/norm/bias
-
-  encoder/final_norm/alpha
-  encoder/final_norm/bias
-
-  mlm_head/W                          ← output projection (d_model → vocab_size)
-  mlm_head/b
-
-  meta/epoch                          ← scalar bookkeeping
-  meta/step
-  meta/train_loss_history             ← 1-D array of per-step losses so far
-"""
-
 import numpy as np
 import os
 

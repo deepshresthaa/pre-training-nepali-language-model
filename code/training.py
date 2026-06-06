@@ -1,38 +1,3 @@
-"""
-protein_lm.py  —  Nepali Text LM  (MLM training)
-─────────────────────────────────────────────────────────────────────────────
-Folder layout expected
-  NEPAL.../
-  ├── code/
-  │   ├── encoder.py
-  │   ├── checkpoint.py
-  │   └── protein_lm.py   ← this file
-  └── dataset/
-      ├── ne.txt
-      └── nepali_bpe.vocab
-
-Tokenizer
-─────────────────────────────────────────────────────────────────────────────
-  Uses nepali_bpe.vocab (one subword piece per line, no SentencePiece .model
-  needed).  Unknown words fall back to <unk>.
-
-Usage
-─────
-  # minimum command — auto batch-size, full dataset
-  python protein_lm.py
-
-  # explicit everything (good starting point for 1.76 GB ne.txt on CPU/P100)
-  python protein_lm.py \
-      --data_file  ../dataset/ne.txt \
-      --vocab_file ../dataset/nepali_bpe.vocab \
-      --epochs 3 --steps 1000 --batch 4 \
-      --d_model 256 --layers 4 --heads 8 --d_ff 1024 \
-      --lr 3e-4 --seq_len 512 --log_every 50
-
-  # quick smoke-test (only first 50 000 lines)
-  python protein_lm.py --max_lines 50000 --steps 100
-"""
-
 import numpy as np
 import math
 import argparse
